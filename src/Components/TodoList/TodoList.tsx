@@ -1,16 +1,31 @@
 import React, { useState } from 'react'
-import { TodoList } from '../../Utilities/interface';
+import { ProjectTodos, TodoList } from '../../Utilities/interface';
 import TodoProjectForm from '../TodoForm/TodoProjectForm';
 import Project from '../Project/Project';
 
 export default function () {
 	const [ todos, setTodos ] = useState<TodoList[]>([]);
 
+	// add project or todos
 	const addTodoProject = (projectName: string) => {
-		if(!projectName.trim()) {
-			return
-		}
-		setTodos(prevState => [ ...prevState, { id: prevState.length + 1, projectName: projectName, projectTodos: [] } ])
+		setTodos(prevState => [ ...prevState, { id: prevState.length, projectName: projectName, projectTodos: [] } ])
+	}
+
+	const addTodoToProject = (id: number, todo: string) => {
+
+		const updatedProjects = todos.map(project => {
+			if( project.id === id) {
+				const newTodo = {
+					id: project.projectTodos.length,
+					name: todo,
+					completed: false
+				};
+
+				project.projectTodos.push(newTodo)
+			}
+			return project
+		});
+		setTodos(updatedProjects)
 	}
 
 	const updateProjectName = (id: number, name: string) => {
@@ -43,6 +58,7 @@ export default function () {
 					projectTodos={project.projectTodos}
 					updateProjectName={updateProjectName}
 					removeProject={removeProject}
+					addTodoToProject={addTodoToProject}
 				/>
 			)
 		})

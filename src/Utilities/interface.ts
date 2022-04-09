@@ -2,7 +2,7 @@ export interface TodoList
 {
 	id: number,
 	projectName: string,
-	projectTodos: ProjectTodos[] | []
+	projectTodos: ProjectTodos[]
 }
 
 export interface ProjectTodos

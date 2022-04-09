@@ -4,7 +4,7 @@ import EditableText from '../EditableText/EditableText'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Todo from '../Todo/Todo';
 
-export default function Project({ id, name, projectTodos, updateProjectName, removeProject }: { id: number, name: string, projectTodos: ProjectTodos[] | [], updateProjectName: (id: number, name: string) => void, removeProject: (id: number) => void }) {
+export default function Project({ id, name, projectTodos, updateProjectName, removeProject, addTodoToProject }: { id: number, name: string, projectTodos: ProjectTodos[] | [], updateProjectName: (id: number, name: string) => void, removeProject: (id: number) => void, addTodoToProject: (id: number, todo: string) => void }) {
 
 	const [ todoFormInput, setTodoFormInput ] = useState<string>('');
 
@@ -13,7 +13,8 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 	}
 
 	const addTodo = () => {
-
+		addTodoToProject(id, todoFormInput)
+		setTodoFormInput('')
 	}
 	
 	const updateName = (newName: string) => {
