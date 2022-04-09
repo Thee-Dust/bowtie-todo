@@ -4,7 +4,7 @@ import EditableText from '../EditableText/EditableText'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Todo from '../Todo/Todo';
 
-export default function Project({ id, name, projectTodos, updateProjectName, removeProject, addTodoToProject, updateCompletedTodo }: { id: number, name: string, projectTodos: ProjectTodos[] | [], updateProjectName: (id: number, name: string) => void, removeProject: (id: number) => void, addTodoToProject: (id: number, todo: string) => void, updateCompletedTodo:(projectId: number, todoId: number) => void }) {
+export default function Project({ id, name, projectTodos, updateProjectName, removeProject, addTodoToProject, updateCompletedTodo, removeTodo }: { id: number, name: string, projectTodos: ProjectTodos[] | [], updateProjectName: (id: number, name: string) => void, removeProject: (id: number) => void, addTodoToProject: (id: number, todo: string) => void, updateCompletedTodo: (projectId: number, todoId: number) => void, removeTodo: (projectId: number, todoId: number) => void }) {
 
 	const [ todoFormInput, setTodoFormInput ] = useState<string>('');
 
@@ -22,15 +22,20 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 	const updateName = (newName: string) => {
 		updateProjectName(id, newName);
 	}
+	
+	const updateTodo = (todoId: number) => {
+		updateCompletedTodo(id, todoId)
+	}
 
 	const deleteProject = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault()
 		removeProject(id)
 	}
 
-	const updateTodo = (todoId: number) => {
-		updateCompletedTodo(id, todoId)
+	const deleteTodo = (todoId: number) => {
+		removeTodo(id, todoId)
 	}
+
 
 	let todoCards = null;
 
@@ -42,7 +47,8 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 				id={todo.id}
 				name={todo.name}
 				completed={todo.completed}
-					updateTodo={updateTodo}
+				updateTodo={updateTodo}
+				deleteTodo={deleteTodo}
 				/>
 			)
 		})

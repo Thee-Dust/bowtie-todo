@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ProjectTodos, TodoList } from '../../Utilities/interface';
+import { TodoList } from '../../Utilities/interface';
 import TodoProjectForm from '../TodoForm/TodoProjectForm';
 import Project from '../Project/Project';
 
@@ -12,7 +12,6 @@ export default function () {
 	}
 
 	const addTodoToProject = (id: number, todo: string) => {
-
 		const updatedProjects = todos.map(project => {
 			if( project.id === id) {
 				const newTodo = {
@@ -55,13 +54,22 @@ export default function () {
 		setTodos(updatedProjects)
 	}
 
+	const removeTodo = (projectId: number, todoId: number) => {
+		let updatedTodos = todos.map(project => {
+			if (project.id === projectId) {
+				project.projectTodos.slice(todoId, 1);
+			}
+			return project
+		});
+		setTodos(updatedTodos)
+	}
 
 
 	//if user has no projects then message will appear
 	let projectCards: string | JSX.Element[] = 'No Projects yet, Add a project';
 	//when user adds a project it will map over state
 	if (todos.length) {
-		projectCards = todos.map((project) => {
+		projectCards = todos.map(project => {
 			return (
 				<Project
 					key={project.id}
@@ -72,6 +80,7 @@ export default function () {
 					removeProject={removeProject}
 					addTodoToProject={addTodoToProject}
 					updateCompletedTodo={updateCompletedTodo}
+					removeTodo={removeTodo}
 				/>
 			)
 		})
