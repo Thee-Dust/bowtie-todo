@@ -7,7 +7,7 @@ export default function () {
 	const [ todos, setTodos ] = useState<TodoList[]>([]);
 
 	const addTodoProject = (projectName: string) => {
-		if(!!projectName.trim()) {
+		if(!projectName.trim()) {
 			return
 		}
 		setTodos(prevState => [ ...prevState, { id: prevState.length + 1, projectName: projectName, projectTodos: [] } ])

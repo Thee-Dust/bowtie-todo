@@ -11,7 +11,7 @@ export default function TodoForm({ addTodoProject }: { addTodoProject: (projectN
 		event.preventDefault();
 
 		addTodoProject(todoFormInput)
-
+		setTodoFormInput('')
 	}
 
 	return (
