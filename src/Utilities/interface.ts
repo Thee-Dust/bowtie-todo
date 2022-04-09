@@ -1,11 +1,13 @@
 export interface TodoList
 {
+	id: number,
 	projectName: string,
-	projectTodos: ProjectTodos[] | null
+	projectTodos: ProjectTodos[] | []
 }
 
-interface ProjectTodos
+export interface ProjectTodos
 {
+	id: number,
 	name: string,
 	completed: boolean
 }
