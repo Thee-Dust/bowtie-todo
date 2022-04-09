@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { TodoList } from '../../Utilities/interface';
-import TodoForm from '../TodoForm/TodoForm';
+import TodoProjectForm from '../TodoForm/TodoProjectForm';
 import Project from '../Project/Project';
 
 export default function () {
@@ -52,7 +52,7 @@ export default function () {
 	return (
 		<div>
 			<h1>What are you planning to do today?</h1>
-			<TodoForm addTodoProject={addTodoProject} />
+			<TodoProjectForm addTodoProject={addTodoProject} />
 			<div>
 				{projectCards}
 			</div>
