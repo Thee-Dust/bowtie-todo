@@ -28,6 +28,7 @@ export default function () {
 		setTodos(updatedProjects)
 	}
 
+	//update a project or a todo
 	const updateProjectName = (id: number, name: string) => {
 		let updatedProjectName = todos.map(project => {
 			if (project.id === id) {
@@ -38,6 +39,17 @@ export default function () {
 		setTodos(updatedProjectName)
 	}
 
+	const updateCompletedTodo = (projectId: number, todoId: number) => {
+		let updatedTodos = todos.map(project => {
+			if (project.id === projectId) {
+				project.projectTodos[todoId].completed = !project.projectTodos[todoId].completed;
+			}
+			return project
+		});
+		setTodos(updatedTodos)
+	}
+
+	//remove a project or a todo
 	const removeProject = (id: number) => {
 		const updatedProjects = todos.filter(project => project.id !== id);
 		setTodos(updatedProjects)
@@ -59,6 +71,7 @@ export default function () {
 					updateProjectName={updateProjectName}
 					removeProject={removeProject}
 					addTodoToProject={addTodoToProject}
+					updateCompletedTodo={updateCompletedTodo}
 				/>
 			)
 		})

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { FormEvent, FormEventHandler, useState } from 'react'
 import { ProjectTodos } from '../../Utilities/interface'
 import EditableText from '../EditableText/EditableText'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Todo from '../Todo/Todo';
 
-export default function Project({ id, name, projectTodos, updateProjectName, removeProject, addTodoToProject }: { id: number, name: string, projectTodos: ProjectTodos[] | [], updateProjectName: (id: number, name: string) => void, removeProject: (id: number) => void, addTodoToProject: (id: number, todo: string) => void }) {
+export default function Project({ id, name, projectTodos, updateProjectName, removeProject, addTodoToProject, updateCompletedTodo }: { id: number, name: string, projectTodos: ProjectTodos[] | [], updateProjectName: (id: number, name: string) => void, removeProject: (id: number) => void, addTodoToProject: (id: number, todo: string) => void, updateCompletedTodo:(projectId: number, todoId: number) => void }) {
 
 	const [ todoFormInput, setTodoFormInput ] = useState<string>('');
 
@@ -12,7 +12,9 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 		setTodoFormInput(event.target.value)
 	}
 
-	const addTodo = () => {
+	const addTodo = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
 		addTodoToProject(id, todoFormInput)
 		setTodoFormInput('')
 	}
@@ -26,6 +28,10 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 		removeProject(id)
 	}
 
+	const updateTodo = (todoId: number) => {
+		updateCompletedTodo(id, todoId)
+	}
+
 	let todoCards = null;
 
 	if(projectTodos.length) {
@@ -36,6 +42,7 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 				id={todo.id}
 				name={todo.name}
 				completed={todo.completed}
+					updateTodo={updateTodo}
 				/>
 			)
 		})
