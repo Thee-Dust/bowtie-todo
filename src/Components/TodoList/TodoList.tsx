@@ -4,7 +4,9 @@ import { TodoList } from '../../Utilities/interface';
 export default function () {
 	const [ todos, setTodos ] = useState<TodoList[]>([]);
 
-	
+	const addTodoProject = (projectName: string) => {
+		setTodos(prevState => [ ...prevState, { projectName: projectName, projectTodos: [] } ])
+	}
 
 
 	return (
