@@ -23,6 +23,11 @@ export default function () {
 		setTodos(updatedProjectName)
 	}
 
+	const removeProject = (id: number) => {
+		const updatedProjects = todos.filter(project => project.id !== id);
+		setTodos(updatedProjects)
+	}
+
 
 
 	//if user has no projects then message will appear
@@ -37,6 +42,7 @@ export default function () {
 					name={project.projectName}
 					projectTodos={project.projectTodos}
 					updateProjectName={updateProjectName}
+					removeProject={removeProject}
 				/>
 			)
 		})
