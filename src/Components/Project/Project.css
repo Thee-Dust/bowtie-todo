@@ -1,0 +1,28 @@
+.project {
+	height: 400px;
+	width: 400px;
+	border: solid 2px red;
+	position: relative;
+}
+
+.delete-proj {
+	cursor: pointer;
+	position: absolute;
+	border: none;
+	background-color: transparent;
+	right: 0px;
+	top: 4px;
+}
+
+.todo-form {
+	margin-top: 20px;
+	font-size: 16px;
+}
+
+.todo-form > input {
+	font-size: 20px;
+}
+.todo-form > button {
+	font-size: 20px;
+}
+
