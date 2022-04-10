@@ -1,0 +1,21 @@
+.todo-project-form {
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.todo-project-form > input {
+	height: 40px;
+	font-size: 20px;
+}
+
+.todo-project-form > button {
+	height: 46px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.todo-project-form > button:disabled {
+	cursor: auto;
+}
