@@ -61,7 +61,7 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 			{todoCards}
 			<form name='todoForm' onSubmit={addTodo}>
 				<input type="text" placeholder='Add a todo' value={todoFormInput} onChange={updateTodoFormInput} />
-				<button type='submit' disabled={!todoFormInput.trim()}>Add Project</button>
+				<button type='submit' disabled={!todoFormInput.trim()}>Add Todo</button>
 			</form>
 		</div>
 	)

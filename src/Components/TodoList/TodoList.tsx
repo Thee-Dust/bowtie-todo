@@ -57,7 +57,7 @@ export default function () {
 	const removeTodo = (projectId: number, todoId: number) => {
 		let updatedTodos = todos.map(project => {
 			if (project.id === projectId) {
-				project.projectTodos.slice(todoId, 1);
+				project.projectTodos.splice(todoId, 1);
 			}
 			return project
 		});
