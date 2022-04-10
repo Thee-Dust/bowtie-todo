@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TodoList } from '../../Utilities/interface';
 import TodoProjectForm from '../TodoForm/TodoProjectForm';
 import Project from '../Project/Project';
 
 export default function () {
-	const [ todos, setTodos ] = useState<TodoList[]>([]);
+	const [ todos, setTodos ] = useState<TodoList[]>(() => {
+		const savedTodoProjects = localStorage.getItem('todos');
+		return savedTodoProjects !== null
+		? JSON.parse(savedTodoProjects)
+		: []
+	});
+
+	//Save todo data to local storage
+	useEffect(() => {
+		const saveTodosToStorage = () => {
+			localStorage.setItem('todos', JSON.stringify(todos));
+		}
+		saveTodosToStorage()
+	}, [todos])
 
 	// add project or todos
 	const addTodoProject = (projectName: string) => {
