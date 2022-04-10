@@ -1,0 +1,14 @@
+.todo {
+	width: 75%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todo > label {
+	font-size: 20px;
+}
+
+.todo > label > input {
+	margin-right: 8px;
+}

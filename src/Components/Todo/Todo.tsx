@@ -1,5 +1,6 @@
 import React, { FormEvent } from 'react'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import './Todo.css'
 
 export default function Todo({ id, name, completed, updateTodo, deleteTodo }: { id: number, name: string, completed: boolean, updateTodo: (todoId: number) => void, deleteTodo: (todoId: number) => void }) {
 	
@@ -13,10 +14,12 @@ export default function Todo({ id, name, completed, updateTodo, deleteTodo }: { 
 	}
 	
 	return (
-		<>
-			<input type="checkbox" defaultChecked={completed} onClick={handleClick}/>
-			<label>{name}</label>
+		<div className='todo'>
+			<label>
+				<input type="checkbox" defaultChecked={completed} onClick={handleClick}/>
+				{name}
+			</label>
 			<button onClick={event => removeTodo(event)}><DeleteOutlineOutlinedIcon /></button>
-		</>
+		</div>
 	)
 }
