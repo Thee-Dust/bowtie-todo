@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react'
-
+import './TodoProjectForm.css'
 
 export default function TodoProjectForm({ addTodoProject }: { addTodoProject: (projectName: string) => void }) {
 	const [ todoProjectFormInput, setTodoProjectFormInput ] = useState<string>('');
@@ -16,7 +16,7 @@ export default function TodoProjectForm({ addTodoProject }: { addTodoProject: (p
 	}
 
 	return (
-		<form name='TodoForm' onSubmit={handleSubmit}>
+		<form name='TodoForm' onSubmit={handleSubmit} className='todo-project-form'>
 			<input type="text" placeholder='Add a todo project' value={todoProjectFormInput} onChange={updateTodoProjectFormInput} />
 			<button type='submit' disabled={!todoProjectFormInput.trim()}>Add Project</button>
 		</form>
