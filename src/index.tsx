@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
+import AuthProvider from './Context/AuthContext';
 
 const container = document.getElementById('root');
 if(!container) throw new Error('Failed to find root element');
@@ -10,7 +11,9 @@ const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <App />
+		<AuthProvider>
+    	<App />
+		</AuthProvider>
   </React.StrictMode>
 );
 
