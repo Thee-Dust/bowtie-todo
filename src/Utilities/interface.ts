@@ -1,4 +1,4 @@
-export interface TodoList
+export interface Todos
 {
 	id: number,
 	projectName: string,

@@ -9,6 +9,7 @@ export default function SignUp() {
 	const [ error, setError ] = useState<string>();
 	const [ loading, setLoading ] = useState<boolean>(false);
 	const { signUp } = useAuth();
+	// const navigate = useNavigate()
 
 	const handleSignUpFormChange = (e: { target: { value: React.SetStateAction<string> } }, inputFeild: string) => {
 		if (inputFeild === 'email') {
@@ -31,6 +32,7 @@ export default function SignUp() {
 			setError('')
 			setLoading(true)
 			await signUp(signUpFormEmailInput, signUpFormPasswordInput)
+			// navigate('todos')
 		} catch (error) {
 			setError('Email or password is incorrect')
 		}
@@ -68,7 +70,7 @@ export default function SignUp() {
 						<input
 							type='password'
 							value={signUpFormConfirmPasswordInput}
-							onChange={(event) => handleSignUpFormChange(event, 'confirm - password')}
+							onChange={(event) => handleSignUpFormChange(event, 'confirm-password')}
 							required
 						/>
 					</label>
@@ -76,7 +78,7 @@ export default function SignUp() {
 				<button disabled={loading} className='submit-button' type='submit'>Sign Up</button>
 			</form>
 			<div>
-				<p className='switch'>Already have an account? <Link to='/login'>Login</Link></p>
+				<p className='switch'>Already have an account? <Link to='login'>Login</Link></p>
 			</div>
 		</div>
 	)

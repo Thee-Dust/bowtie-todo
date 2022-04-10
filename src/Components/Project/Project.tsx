@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { ProjectTodos } from '../../Utilities/interface'
 import EditableText from '../EditableText/EditableText'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';

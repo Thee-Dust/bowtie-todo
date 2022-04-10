@@ -4,6 +4,7 @@ import './index.css';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './Context/AuthContext';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const container = document.getElementById('root');
 if(!container) throw new Error('Failed to find root element');
@@ -12,7 +13,9 @@ const root = createRoot(container)
 root.render(
   <React.StrictMode>
 		<AuthProvider>
-    	<App />
+			<Router>
+    		<App />
+			</Router>
 		</AuthProvider>
   </React.StrictMode>
 );

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { TodoList } from '../../Utilities/interface';
+import { Todos } from '../../Utilities/interface';
 import TodoProjectForm from '../TodoProjectForm/TodoProjectForm';
 import Project from '../Project/Project';
 import './TodoList.css'
 
-export default function () {
-	const [ todos, setTodos ] = useState<TodoList[]>(() => {
+export default function TodoList() {
+	const [ todos, setTodos ] = useState<Todos[]>(() => {
 		const savedTodoProjects = localStorage.getItem('todos');
 		return savedTodoProjects !== null
 		? JSON.parse(savedTodoProjects)
