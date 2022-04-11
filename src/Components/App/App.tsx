@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoList from '../TodoList/TodoList';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 // import Header from '../Header/Header';
 import './App.css';
 import PrivateRoute from '../Routes/PrivateRoute';
@@ -30,6 +30,7 @@ function App() {
 					</GuestUserRoute>
 					}
 				/>
+				<Route path='*' element={<Navigate to='login' replace />} />
 			</Routes>
 			{/* <Header /> */}
     </main>
