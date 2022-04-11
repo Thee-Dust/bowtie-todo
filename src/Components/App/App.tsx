@@ -12,12 +12,14 @@ function App() {
   return (
     <main className="App">
 			<Routes>
+				{/* Private Route sees if a user is signed in. if so, it takes them to TodoList. If not, they go to login */}
 				<Route index element={
 					<PrivateRoute>
 						<TodoList />
 					</PrivateRoute>
 					}
-				/>
+					/>
+					{/* Guest Route sees if a user is signed in. if not, it takes them to component. if so, they go to TodoList component */}
 				<Route path='login' element={
 					<GuestUserRoute>
 						<Login />
@@ -30,9 +32,9 @@ function App() {
 					</GuestUserRoute>
 					}
 				/>
+				{/* when a user goes to a url not made they get redirected to login */}
 				<Route path='*' element={<Navigate to='login' replace />} />
 			</Routes>
-			{/* <Header /> */}
     </main>
   );
 }

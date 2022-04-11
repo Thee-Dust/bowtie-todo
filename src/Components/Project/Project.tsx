@@ -37,7 +37,7 @@ export default function Project({ id, name, projectTodos, updateProjectName, rem
 		removeTodo(id, todoId)
 	}
 
-
+	// if a user has no todos then nothing will appear. when they do have todos it will map over the array and create instances of todo components and render
 	let todoCards = null;
 
 	if(projectTodos.length) {
