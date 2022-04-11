@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
-import AuthProvider from './Context/AuthContext';
+import { AuthProvider } from './Context/AuthContext';
+import { TodoProvider } from './Context/TodoContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const container = document.getElementById('root');
@@ -12,11 +13,13 @@ const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-		<AuthProvider>
-			<Router>
-    		<App />
-			</Router>
-		</AuthProvider>
+		<TodoProvider>
+			<AuthProvider>
+				<Router>
+					<App />
+				</Router>
+			</AuthProvider>
+		</TodoProvider>
   </React.StrictMode>
 );
 

@@ -1,8 +1,10 @@
 import React, { FormEvent, useState } from 'react'
+import { useTodo } from '../../Context/TodoContext'
 import './TodoProjectForm.css'
 
-export default function TodoProjectForm({ addTodoProject }: { addTodoProject: (projectName: string) => void }) {
+export default function TodoProjectForm() {
 	const [ todoProjectFormInput, setTodoProjectFormInput ] = useState<string>('');
+	const { addTodoProject } = useTodo();
 
 	const updateTodoProjectFormInput = (event: { target: { value: React.SetStateAction<string> } }) => {
 		setTodoProjectFormInput(event.target.value)

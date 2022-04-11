@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
 import React from 'react'
 import EdiText from 'react-editext';
+import { useTodo } from '../../Context/TodoContext';
 import './EditableText.css'
 
-export default function EditableText({ text, updateName }: { text: string, updateName: (newName: string) => void }) {
+export default function EditableText({ text, projectId }: { text: string, projectId: number }) {
+	const { updateProjectName } = useTodo();
+
 
 	const handleSave = (val: string) => {
-		updateName(val)
+		updateProjectName(projectId, val)
 	}
 
 	// Have to use Styled component to style ediText when editing
