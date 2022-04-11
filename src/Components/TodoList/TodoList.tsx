@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { TodoList } from '../../Utilities/interface';
+import { Todos } from '../../Utilities/interface';
 import TodoProjectForm from '../TodoProjectForm/TodoProjectForm';
 import Project from '../Project/Project';
 import './TodoList.css'
+import Header from '../Header/Header';
 
-export default function () {
-	const [ todos, setTodos ] = useState<TodoList[]>(() => {
+export default function TodoList() {
+	const [ todos, setTodos ] = useState<Todos[]>(() => {
 		const savedTodoProjects = localStorage.getItem('todos');
 		return savedTodoProjects !== null
 		? JSON.parse(savedTodoProjects)
@@ -100,12 +101,15 @@ export default function () {
 	}
 
 	return (
-		<div className='todo-list'>
-			<h1 className='welcome-msg'>What are you planning to do today?</h1>
-			<TodoProjectForm addTodoProject={addTodoProject} />
-			<div className='card-section'>
-				{projectCards}
+		<>
+			<Header />
+			<div className='todo-list'>
+				<h1 className='welcome-msg'>What are you planning to do today?</h1>
+				<TodoProjectForm addTodoProject={addTodoProject} />
+				<div className='card-section'>
+					{projectCards}
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }
