@@ -106,7 +106,7 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 
 	return (
 		<TodoContext.Provider value={value}>
-
+			{children}
 		</TodoContext.Provider>
 	)
 }
