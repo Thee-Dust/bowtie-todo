@@ -18,7 +18,6 @@ export function useTodo() {
 	return useContext(TodoContext)
 }
 
-
 export function TodoProvider({ children }: { children: ReactNode }) {
 	const [todos, setTodos] = useState<Todos[]>(() => {
 		const savedTodoProjects = localStorage.getItem('todos');
@@ -27,7 +26,6 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 			: []
 	});
 
-	//Save todo data to local storage
 	useEffect(() => {
 		const saveTodosToStorage = () => {
 			localStorage.setItem('todos', JSON.stringify(todos));
@@ -35,7 +33,6 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 		saveTodosToStorage()
 	}, [todos])
 
-	// add project or todos
 	const addTodoProject = (projectName: string) => {
 		setTodos(prevState => [...prevState, { id: prevState.length, projectName: projectName, projectTodos: [] }])
 	};
@@ -56,7 +53,6 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 		setTodos(updatedProjects)
 	};
 
-	//update a project or a todo
 	const updateProjectName = (id: number, name: string) => {
 		let updatedProjectName = todos.map(project => {
 			if (project.id === id) {
@@ -77,7 +73,6 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 		setTodos(updatedTodos)
 	};
 
-	//remove a project or a todo
 	const removeProject = (id: number) => {
 		const updatedProjects = todos.filter(project => project.id !== id);
 		setTodos(updatedProjects)
