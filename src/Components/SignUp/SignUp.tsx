@@ -35,7 +35,7 @@ export default function SignUp() {
 			await signUp(signUpFormEmailInput, signUpFormPasswordInput)
 			navigate('todos')
 		} catch (error) {
-			setError('Email or password is incorrect')
+			setError('User already has that email')
 		}
 		setLoading(false)
 	}
