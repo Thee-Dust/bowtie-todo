@@ -1,16 +1,18 @@
 import React, { FormEvent } from 'react'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { useTodo } from '../../Context/TodoContext'
 import './Todo.css'
 
-export default function Todo({ id, name, completed, updateTodo, deleteTodo }: { id: number, name: string, completed: boolean, updateTodo: (todoId: number) => void, deleteTodo: (todoId: number) => void }) {
-	
+export default function Todo({ id, name, completed, projectId }: { id: number, name: string, completed: boolean, projectId: number }) {
+	const { updateCompletedTodo, removeTodo } = useTodo();
+
 	const handleClick = () => {
-		updateTodo(id)
+		updateCompletedTodo(projectId, id)
 	}
 
-	const removeTodo = (e: FormEvent<HTMLButtonElement>) => {
+	const deleteTodo = (e: FormEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		deleteTodo(id)
+		removeTodo(projectId, id)
 	}
 	
 	return (
@@ -19,7 +21,7 @@ export default function Todo({ id, name, completed, updateTodo, deleteTodo }: { 
 				<input type="checkbox" defaultChecked={completed} onClick={handleClick}/>
 				{name}
 			</label>
-			<button onClick={event => removeTodo(event)}><DeleteOutlineOutlinedIcon /></button>
+			<button onClick={event => deleteTodo(event)}><DeleteOutlineOutlinedIcon /></button>
 		</div>
 	)
 }
