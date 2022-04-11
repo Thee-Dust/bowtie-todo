@@ -33,7 +33,7 @@ export default function SignUp() {
 			setError('')
 			setLoading(true)
 			await signUp(signUpFormEmailInput, signUpFormPasswordInput)
-			navigate('todos')
+			navigate('/')
 		} catch (error) {
 			setError('User already has that email')
 		}

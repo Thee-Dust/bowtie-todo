@@ -26,7 +26,7 @@ export default function Login() {
 				setError('')
 				setLoading(true)
 				await login(loginFormEmailInput, loginFormPasswordInput)
-				navigate('todos')
+				navigate('/')
 			} catch(error) {
 				setError('Email or password is incorrect')
 			}
