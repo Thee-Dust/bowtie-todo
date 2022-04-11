@@ -3,6 +3,7 @@ import { Todos } from '../../Utilities/interface';
 import TodoProjectForm from '../TodoProjectForm/TodoProjectForm';
 import Project from '../Project/Project';
 import './TodoList.css'
+import Header from '../Header/Header';
 
 export default function TodoList() {
 	const [ todos, setTodos ] = useState<Todos[]>(() => {
@@ -100,12 +101,15 @@ export default function TodoList() {
 	}
 
 	return (
-		<div className='todo-list'>
-			<h1 className='welcome-msg'>What are you planning to do today?</h1>
-			<TodoProjectForm addTodoProject={addTodoProject} />
-			<div className='card-section'>
-				{projectCards}
+		<>
+			<Header />
+			<div className='todo-list'>
+				<h1 className='welcome-msg'>What are you planning to do today?</h1>
+				<TodoProjectForm addTodoProject={addTodoProject} />
+				<div className='card-section'>
+					{projectCards}
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }

@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
+import './SignUp.css'
 
 export default function SignUp() {
 	const [ signUpFormEmailInput, setSignUpFormEmailInput ] = useState<string>('');
@@ -9,7 +10,7 @@ export default function SignUp() {
 	const [ error, setError ] = useState<string>();
 	const [ loading, setLoading ] = useState<boolean>(false);
 	const { signUp } = useAuth();
-	// const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const handleSignUpFormChange = (e: { target: { value: React.SetStateAction<string> } }, inputFeild: string) => {
 		if (inputFeild === 'email') {
@@ -32,7 +33,7 @@ export default function SignUp() {
 			setError('')
 			setLoading(true)
 			await signUp(signUpFormEmailInput, signUpFormPasswordInput)
-			// navigate('todos')
+			navigate('todos')
 		} catch (error) {
 			setError('Email or password is incorrect')
 		}
@@ -44,7 +45,7 @@ export default function SignUp() {
 				<h2>Sign Up</h2>
 				{error && <h2>{error}</h2>}
 			</div>
-			<form name='Signup form' onSubmit={handleSignUpFormSubmit}>
+			<form className='signup-form' name='Signup form' onSubmit={handleSignUpFormSubmit}>
 				<div className='txt-feild'>
 					<label>Email
 						<input
@@ -78,7 +79,7 @@ export default function SignUp() {
 				<button disabled={loading} className='submit-button' type='submit'>Sign Up</button>
 			</form>
 			<div>
-				<p className='switch'>Already have an account? <Link to='login'>Login</Link></p>
+				<p className='switch'>Already have an account? <Link to='/login'>Login</Link></p>
 			</div>
 		</div>
 	)

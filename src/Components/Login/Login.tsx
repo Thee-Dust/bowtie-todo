@@ -1,7 +1,8 @@
 
 import React, { FormEvent, useState } from 'react'
 import { useAuth } from '../../Context/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import './Login.css'
 
 export default function Login() {
 	const [ loginFormEmailInput, setLoginFormEmailInput ] = useState<string>('');
@@ -9,7 +10,7 @@ export default function Login() {
 	const [ error, setError ] = useState<string>();
 	const [ loading, setLoading ] = useState<boolean>(false);
 	const { login } = useAuth();
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 	
 	const handleLoginFormChange = (e: { target: { value: React.SetStateAction<string> } },inputFeild: string) => {
 			if(inputFeild === 'email') {
@@ -25,7 +26,7 @@ export default function Login() {
 				setError('')
 				setLoading(true)
 				await login(loginFormEmailInput, loginFormPasswordInput)
-				// navigate('todos')
+				navigate('todos')
 			} catch(error) {
 				setError('Email or password is incorrect')
 			}
@@ -38,7 +39,7 @@ export default function Login() {
 				<h2>Sign In</h2>
 				{error && <h2>{error}</h2>}
 			</div>
-			<form name='Login form' onSubmit={handleLoginFormSubmit}>
+			<form className='login-form' name='Login form' onSubmit={handleLoginFormSubmit}>
 				<div className='txt-feild'>
 					<label>Email
 						<input
@@ -62,7 +63,7 @@ export default function Login() {
 				<button className='submit-button' type='submit' disabled={loading}>Login</button>
 			</form>
 			<div>
-				<p className='switch'>Don't have an account? <Link to='signup'>Sign Up</Link></p>
+				<p className='switch'>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
 			</div>
 		</div>
 	)
