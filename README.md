@@ -17,14 +17,20 @@ Once you click add a project give the project a name, you do not need to have go
 
 app, you do that by clicking the ```</>``` symbol and give your app a nickname. After clicking register app button you will be given a Firebase SDK.
 
+To add OAuth return to console and click Authentication on the side navbar. Go to Sign-in Methods of authentication, and enable ```Email/Password``` and click save.
+
+### Now you are ready to add the Firebase SDK to the app
+
 to add a Firebase SDK key make a ```.env.local``` file, with the variables being
+
+#### Example below
  
-```REACT_APP_FIREBASE_API_KEY=firebaseApiKey(no string quotes)
-REACT_APP_FIREBASE_AUTH_DOMAIN=FirebaseAuthDomain(no string quotes)
-REACT_APP_FIREBASE_PROJECT_ID=FirebaseProjectId(no string quotes)
-REACT_APP_FIREBASE_STORAGE_BUCKET=FirebaseStorageBucket(no string quotes)
-REACT_APP_FIREBASE_MESSENGING_SENDER_ID=MessengingSenderId(no string quotes)
-REACT_APP_FIREBASE_APP_ID=FirebaseAppId(no string quotes)
+```REACT_APP_FIREBASE_API_KEY=AIzaSyAkQ3_ZAqbIgF1gjqfElREUlmdDotQD69w
+REACT_APP_FIREBASE_AUTH_DOMAIN=test-42o69.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=test-42o69
+REACT_APP_FIREBASE_STORAGE_BUCKET=test-42o69.appspot.com
+REACT_APP_FIREBASE_MESSENGING_SENDER_ID=632420428985
+REACT_APP_FIREBASE_APP_ID=1:332460448985:web:953161aeb4345c2ebd32c8
 ```
 
 After you add the Firebase SDK you are ready to run ```npm start``` run the development server
